@@ -20,7 +20,7 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 
 	@Override
 	public void execute() {
-		LOGGER.debug("Global Transference Fee");
+		LOGGER.debug("Global Transference Fee ");
 		String idCliente=this.getIdcliente();
 		double amount=this.getWiretransferamount();
 		
