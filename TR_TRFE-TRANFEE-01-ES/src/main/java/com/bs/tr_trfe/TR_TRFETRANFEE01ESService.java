@@ -29,7 +29,7 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 		Map<String, Object> params= new HashMap<String,Object>() ;
 		params.put("IDCLIENT",idCliente);
 		
-		ContextStatusType salida=invokeService("TRFE","TR_TRFE-TRANLEG", "01", "ES", params);
+		ContextStatusType salida=invokeService("TR_TRFE","TR_TRFE-TRANLEG", "01", "ES", params);
 			
 		Double fee=0.0;
 		isVip=salida.getValue().charAt(0);
