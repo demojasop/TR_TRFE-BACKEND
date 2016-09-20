@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+		
+	<bean id="TR_TRFETRANLEG01ESService" class="com.bs.tr_trfe.TR_TRFETRANLEG01ESService" />
+
+	<bean id="configurationArchitecture" class="com.accenture.jasop.test.TestConfiguration">
+		<property name="properties" ref="propertiesLoadedTest" />
+	</bean>
+
+	<bean id="propertiesLoadedTest"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:/database-TR_TRFE-TRANLEG-01-ES.properties</value>
+				<value>classpath:/database-passw-TR_TRFE-TRANLEG-01-ES.properties</value>						
+				<value>classpath:/TR_TRFE-TRANLEG-01-ES.properties</value>
+				<value>classpath:/common-env.properties</value>				
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="dataSource" class="com.accenture.jasop.test.TestDataSource">
+		<property name="driverClassName" value="#{configurationArchitecture.getProperty('database.driverClassName')}" />
+		<property name="url" value="#{configurationArchitecture.getProperty('database.url')}"/>
+		<property name="password" value="#{configurationArchitecture.getProperty('database.password')}" />
+		<property name="username" value="#{configurationArchitecture.getProperty('database.username')}"/>		
+	</bean> 
+	
+	<!-- Uncomment for Transactional testing-->	
+	<!-- <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>  -->
+	
+	<bean id="dummyBundle" class="com.accenture.jasop.test.osgi.DummyBundle">
+		<constructor-arg type="java.lang.String" value="TR_TRFE-TRANLEG-01-ES" />
+	</bean>
+	
+	<bean id="dummyTransactionFileDelegate" class="com.accenture.jasop.test.osgi.DummyTransactionFileDelegate" >
+		<constructor-arg type="javax.sql.DataSource" ref="dataSource" />
+		<constructor-arg type="java.util.Properties" value="#{configurationArchitecture.getProperties()}"/>		
+	</bean>
+	
+	<bean id="dummyBundleContext" class="com.accenture.jasop.test.osgi.DummyBundleContext">
+		<constructor-arg type="org.osgi.framework.Bundle" ref="dummyBundle" />		
+	</bean>
+
+</beans>

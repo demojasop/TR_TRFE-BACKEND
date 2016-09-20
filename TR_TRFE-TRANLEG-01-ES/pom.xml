@@ -1,0 +1,237 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>TR_TRFE-BACKEND</artifactId>
+		<groupId>com.bs.proteotr_trfe</groupId>
+		<version>0.0.0</version>
+	</parent>
+	
+	<groupId>com.bs.tr_trfe</groupId>
+	<artifactId>TR_TRFE-TRANLEG</artifactId>
+	<version>01-ES</version>
+	<packaging>jar</packaging>
+	<description>Legacy Backend Data Client</description>
+	
+	<properties>
+		<jasop.version>1.0.1</jasop.version>
+		<arc.osgi.version>0.0</arc.osgi.version>
+	</properties>
+	
+	<dependencies>
+	    <dependency>
+			<groupId>com.accenture.jasop</groupId>
+			<artifactId>jasop-service</artifactId>
+			<version>${jasop.version}</version>
+			<scope>compile</scope>
+		</dependency>		
+		<dependency>
+			<groupId>com.accenture.jasop</groupId>
+			<artifactId>jasop-test</artifactId>
+			<version>${jasop.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.accenture.jasop</groupId>
+			<artifactId>jasop-data-access-common</artifactId>
+			<version>${jasop.version}</version>
+			<scope>test</scope>
+		</dependency>		
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.jpa</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+<!-- 	  <repositories>
+                               <repository>
+                                               <id>eclipse</id>
+                                               <name>Eclipse Repository</name>
+                                               <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
+                               </repository>
+                               
+                               <repository>
+                                               <id>eclipse.javax.persitence</id>
+                                               <name>OpenCastProject Repository</name>
+                                               <url>http://repository.opencastproject.org/nexus/content/groups/public/</url>
+                               </repository>
+                               
+                               <repository>
+                                               <id>gemini</id>
+                                               <name>Gemini Repository</name>
+                                               <url>http://download.eclipse.org/gemini/mvn/</url>
+                               </repository>
+                
+                               <repository>
+                                               <id>com.springsource.repository.bundles.release</id>
+                                               <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+                                               <url>http://repository.springsource.com/maven/bundles/release</url>
+                               </repository>
+
+                               <repository>
+                                               <id>com.springsource.repository.bundles.external</id>
+                                               <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+                                                <url>http://repository.springsource.com/maven/bundles/external</url>
+                               </repository>
+                               
+                               
+                               
+                               
+                </repositories> -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<supportedProjectTypes>
+						<supportedProjectType>jar</supportedProjectType>
+					</supportedProjectTypes>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}-${project.version}</Bundle-SymbolicName>
+						<Bundle-Activator>com.bs.tr_trfe.TR_TRFETRANLEG01ESService</Bundle-Activator>
+						<Bundle-Category>transaction</Bundle-Category>
+						<Import-Package>
+							com.accenture.jasop.*;version="0.0",
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<finalName>${project.artifactId}-${project.version}</finalName>
+					<archive>
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+					<excludes>
+						<exclude>**/database-${project.artifactId}-${project.version}.properties</exclude>
+						<exclude>**/database-passw-${project.artifactId}-${project.version}.properties</exclude>
+						<exclude>**/${project.artifactId}-${project.version}.properties</exclude>						
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.2</version>
+				<executions>
+					<execution>
+						<id>configuration</id>
+						<phase>install</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/assemble/assembly.xml</descriptor>
+							</descriptors>
+							<appendAssemblyId>false</appendAssemblyId>
+							<finalName>${project.artifactId}-${project.version}-CONFIG</finalName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>configuration-login</id>
+						<phase>install</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/assemble/assembly-login.xml</descriptor>
+							</descriptors>
+							<appendAssemblyId>false</appendAssemblyId>
+							<finalName>${project.artifactId}-${project.version}-PASSW</finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>				
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>install</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/config</outputDirectory>
+							<resources>
+								<resource>
+								 	<directory>src/main/resources</directory>
+									<includes>
+										<include>**/database-${project.artifactId}-${project.version}.properties</include>
+										<include>**/database-passw-${project.artifactId}-${project.version}.properties</include>
+										<include>**/${project.artifactId}-${project.version}.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.felix</groupId>
+										<artifactId>maven-bundle-plugin</artifactId>
+										<versionRange>[2.3.7,)</versionRange>
+										<goals>
+											<goal>manifest</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
