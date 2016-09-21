@@ -69,7 +69,7 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 				
 		LOGGER.debug("Valor calculateFee:"+ " Amount=" + amount+ " isVip=" + isVip);
 		LOGGER.debug("this.getClass().getResource:" +this.getClass().getResource("/rules") );
-		RulesUtilImpl droolsUtil = new RulesUtilImpl(bundleContext, this.getClass().getResource("/rules").toString());
+		RulesUtilImpl droolsUtil = new RulesUtilImpl(bundleContext, "/rules");
 
 		droolsUtil.switchOnEngine();
 
