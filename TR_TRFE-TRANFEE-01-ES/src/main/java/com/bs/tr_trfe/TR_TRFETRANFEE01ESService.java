@@ -44,7 +44,7 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 		Double f=0.0;
 		
 		if (isVip=='1'){
-			f=0.1;
+			f=0.0;
 		}	
 		else{
 			if (amount>1000.00){
