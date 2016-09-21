@@ -35,16 +35,16 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 		Double fee=0.0;
 		
 		fee=calculateFee(amount,isVip);
-		
+				
 		setFeeamount(fee);
 	}
 
 	private Double calculateFee(double amount, char isVip) {
 		// TODO Auto-generated method stub
-		Double f=0.1;
+		Double f=0.0;
 		
 		if (isVip=='1'){
-			f=0.0;
+			f=0.1;
 		}	
 		else{
 			if (amount>1000.00){
