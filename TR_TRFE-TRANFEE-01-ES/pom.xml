@@ -20,6 +20,43 @@
 	</properties>
 	
 	<dependencies>
+	
+	<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/kie-api-6.1.0-SNAPSHOT.jar</systemPath>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/drools-core-6.1.0-SNAPSHOT.jar</systemPath>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-compiler</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/drools-compiler-6.1.0-SNAPSHOT.jar</systemPath>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/drools-decisiontables-6.1.0-SNAPSHOT.jar</systemPath>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-osgi-integration</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/drools-osgi-integration-6.1.0-SNAPSHOT.jar</systemPath>
+			<version>6.1.0</version>
+		</dependency>
+		
 	    <dependency>
 			<groupId>com.accenture.jasop</groupId>
 			<artifactId>jasop-service</artifactId>
@@ -124,8 +161,17 @@
 						<Bundle-Category>transaction</Bundle-Category>
 						<Import-Package>
 							com.accenture.jasop.*;version="0.0",
-							*
+							*;resolution:=optional
 						</Import-Package>
+						<Bundle-ClassPath>.,lib/drools-compiler-6.1.0-SNAPSHOT.jar,
+							lib/drools-core-6.1.0-SNAPSHOT.jar,
+							lib/drools-decisiontables-6.1.0-SNAPSHOT.jar,
+							lib/drools-osgi-integration-6.1.0-SNAPSHOT.jar,
+							lib/drools-persistence-jpa-6.1.0-SNAPSHOT.jar,
+							lib/drools-templates-6.1.0-SNAPSHOT.jar,
+							lib/kie-api-6.1.0-SNAPSHOT.jar,
+							lib/kie-internal-6.1.0-SNAPSHOT.jar
+						</Bundle-ClassPath>
 					</instructions>
 				</configuration>
 			</plugin>
