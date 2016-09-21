@@ -1,6 +1,5 @@
 package com.bs.tr_trfe;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +20,10 @@ public class TR_TRFETRANLEG01ESService extends AbstractTR_TRFETRANLEG01ESService
 	public void execute() {
 		LOGGER.debug("Legacy Backend Data Client");
 		String client=getIdclient();
-		String isVip=isVIPClient(client);
+		
+		String isVip="0";
+		
+		isVip=isVIPClient(client);
 		
 		
 		setIsvip(isVip);
