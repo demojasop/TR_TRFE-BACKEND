@@ -1,5 +1,9 @@
 package com.bs.tr_trfe;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,9 +20,28 @@ public class TR_TRFETRANLEG01ESService extends AbstractTR_TRFETRANLEG01ESService
 	@Override
 	public void execute() {
 		LOGGER.debug("Legacy Backend Data Client");
-		if(getIdclient().equalsIgnoreCase("00000000L"))
-			addError("TR_TRFE001", "ClientId is not correct");
-		setIsvip(LegacyBackend.isVIPClient(getIdclient()));
+		String client=getIdclient();
+		String isVip=isVIPClient(client);
+		
+		
+		setIsvip(isVip);
 	}
+
+	private String isVIPClient(String idclient) {
+		
+		String isVip="0";
+		
+		String vipUsers=getProperty("vipUsers");
+		
+		List<String> list = Arrays.asList(vipUsers.split(","));
+		if (list.contains(idclient))
+				isVip="1";
+		
+		
+		return isVip;
+		
+	}
+	
+	
 
 }
