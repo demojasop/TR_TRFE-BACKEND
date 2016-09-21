@@ -16,6 +16,8 @@ public class TR_TRFETRANLEG01ESService extends AbstractTR_TRFETRANLEG01ESService
 	@Override
 	public void execute() {
 		LOGGER.debug("Legacy Backend Data Client");
+		if(getIdclient().equalsIgnoreCase("00000000L"))
+			addError("TR_TRFE001", "ClientId is not correct");
 		setIsvip(LegacyBackend.isVIPClient(getIdclient()));
 	}
 
