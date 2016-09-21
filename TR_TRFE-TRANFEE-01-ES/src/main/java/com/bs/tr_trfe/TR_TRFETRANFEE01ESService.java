@@ -35,7 +35,7 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 		Double fee=0.0;
 		
 		fee=calculateFee(amount,isVip);
-				
+		
 		setFeeamount(fee);
 	}
 
