@@ -27,48 +27,46 @@ public class TR_TRFETRANFEE01ESService extends AbstractTR_TRFETRANFEE01ESService
 	@Override
 	public void execute() {
 		LOGGER.debug("Global Transference Fee");
+		
+		/*
+		 * Input parameters
+		 */
+		// Client ID
 		String idCliente=this.getIdcliente();
+		// Transfer amount
 		double amount=this.getWiretransferamount();
 		
 		String isVip="0";
 		
+		// Get client data from legacy
 		Map<String, Object> params= new HashMap<String,Object>() ;
 		params.put("IDCLIENT",idCliente);
-		
 		invokeService("TR_TRFE","TR_TRFE-TRANLEG", "01", "ES", params);
 		isVip=getContext().getParameterList().get("ISVIP").getValue().toString();
 		
 		double fee=0.0;
 		
+		// Get fee depending on business rule
 		fee=calculateFee(amount,isVip);
 				
 		setFeeamount(fee);
 	}
 
-//	private Double calculateFee(double amount, char isVip) {
-//		// TODO Auto-generated method stub
-//		Double f=0.0;
-//		
-//		if (isVip=='1'){
-//			f=0.0;
-//		}	
-//		else{
-//			if (amount>1000.00){
-//				f=amount*0.005; 
-//			}
-//			else {
-//				f=amount*0.01;
-//			}
-//		}
-//		return f;
-//	}
-	 
+	/**
+	 * Get fee depending on business rule.
+	 * 
+	 * @param amount
+	 * @param isVip
+	 * @return
+	 */
 	private double calculateFee(double amount, String isVip) {
 		
 		BundleContext bundleContext= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
 				
 		LOGGER.debug("Valor calculateFee:"+ " Amount=" + amount+ " isVip=" + isVip);
 		LOGGER.debug("this.getClass().getResource:" +this.getClass().getResource("/rules") );
+		
+		// Invoke Drools engine
 		RulesUtilImpl droolsUtil = new RulesUtilImpl(bundleContext, "/rules");
 
 		droolsUtil.switchOnEngine();
