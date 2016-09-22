@@ -220,7 +220,12 @@
 							lib/kie-api-6.1.0-SNAPSHOT.jar,
 							lib/kie-internal-6.1.0-SNAPSHOT.jar,
 							lib/xstream-1.4.9.jar,
-							lib/ecj-4.4.2.jar
+							lib/ecj-4.4.2.jar,
+							lib/poi-3.15.jar,
+							lib/poi-excelant-3.15.jar,
+							lib/poi-ooxml-3.15.jar,
+							lib/poi-ooxml-schemas-3.15.jar,
+							lib/poi-scratchpad-3.15.jar
 						</Bundle-ClassPath>
 					</instructions>
 				</configuration>
