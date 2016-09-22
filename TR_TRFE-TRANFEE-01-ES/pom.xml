@@ -70,7 +70,41 @@
 			<systemPath>${project.basedir}/src/main/resources/lib/ecj-4.4.2.jar</systemPath>
 			<version>4.4.2</version>
 		</dependency>		
-		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+    		<artifactId>poi</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/poi-3.15.jar</systemPath>
+			<version>3.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-excelant</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/poi-excelant-3.15.jar</systemPath>
+			<version>3.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-ooxml</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/poi-ooxml-3.15.jar</systemPath>
+			<version>3.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-ooxml-schemas</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/poi-ooxml-schemas-3.15.jar</systemPath>
+			<version>3.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-scratchpad</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/poi-scratchpad-3.15.jar</systemPath>
+			<version>3.15</version>
+		</dependency>
 	    <dependency>
 			<groupId>com.accenture.jasop</groupId>
 			<artifactId>jasop-service</artifactId>
