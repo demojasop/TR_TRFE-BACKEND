@@ -12,7 +12,7 @@
 	<artifactId>TR_TRFE-TRANFEE</artifactId>
 	<version>01-ES</version>
 	<packaging>jar</packaging>
-	<description>Global Transference Fee</description>
+	<description>Global Transference Fee </description>
 	
 	<properties>
 		<jasop.version>1.0.1</jasop.version>
