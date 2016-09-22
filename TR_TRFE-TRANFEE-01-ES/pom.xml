@@ -63,6 +63,14 @@
 			<systemPath>${project.basedir}/src/main/resources/lib/xstream-1.4.9.jar</systemPath>
 			<version>1.4.9</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+    		<artifactId>ecj</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/ecj-4.4.2.jar</systemPath>
+			<version>4.4.2</version>
+		</dependency>		
+		
 	    <dependency>
 			<groupId>com.accenture.jasop</groupId>
 			<artifactId>jasop-service</artifactId>
@@ -177,7 +185,8 @@
 							lib/drools-templates-6.1.0-SNAPSHOT.jar,
 							lib/kie-api-6.1.0-SNAPSHOT.jar,
 							lib/kie-internal-6.1.0-SNAPSHOT.jar,
-							lib/xstream-1.4.9.jar
+							lib/xstream-1.4.9.jar,
+							lib/ecj-4.4.2.jar
 						</Bundle-ClassPath>
 					</instructions>
 				</configuration>
