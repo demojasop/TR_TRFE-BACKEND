@@ -92,6 +92,14 @@
 			<version>3.13</version>
 		</dependency>
 		<dependency>
+			<groupId>org.antlr</groupId>
+    		<artifactId>antlr-runtime</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/antlr-runtime-3.5.jar</systemPath>
+			<version>3.5</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.accenture.jasop</groupId>
 			<artifactId>jasop-service</artifactId>
 			<version>${jasop.version}</version>
@@ -209,7 +217,8 @@
 							lib/ecj-4.4.2.jar,
 							lib/poi-3.13.jar,
 							lib/poi-ooxml-3.13.jar,
-							lib/poi-ooxml-schemas-3.13.jar
+							lib/poi-ooxml-schemas-3.13.jar,
+							lib/antlr-runtime-3.5.jar
 						</Bundle-ClassPath>
 					</instructions>
 				</configuration>
