@@ -151,7 +151,7 @@
 	</dependencies>
 		  <!-- <repositories>
                                <repository>
-                                               <id>eclipse</id>
+                                               <id>eclipse</id> 
                                                <name>Eclipse Repository</name>
                                                <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
                                </repository>
