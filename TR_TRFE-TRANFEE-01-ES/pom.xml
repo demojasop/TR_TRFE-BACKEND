@@ -12,7 +12,7 @@
 	<artifactId>TR_TRFE-TRANFEE</artifactId>
 	<version>01-ES</version>
 	<packaging>jar</packaging>
-	<description>Global Transference Fee  </description>
+	<description>Global Transference Fee</description>
 	
 	<properties>
 		<jasop.version>1.0.1</jasop.version>
@@ -70,7 +70,7 @@
 			<systemPath>${project.basedir}/src/main/resources/lib/ecj-4.4.2.jar</systemPath>
 			<version>4.4.2</version>
 		</dependency>		
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.apache.poi</groupId>
     		<artifactId>poi</artifactId>
 			<scope>system</scope>
@@ -104,7 +104,7 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/lib/poi-scratchpad-3.15.jar</systemPath>
 			<version>3.15</version>
-		</dependency> -->
+		</dependency>
 	    <dependency>
 			<groupId>com.accenture.jasop</groupId>
 			<artifactId>jasop-service</artifactId>
@@ -220,12 +220,12 @@
 							lib/kie-api-6.1.0-SNAPSHOT.jar,
 							lib/kie-internal-6.1.0-SNAPSHOT.jar,
 							lib/xstream-1.4.9.jar,
-							lib/ecj-4.4.2.jar<!-- ,
+							lib/ecj-4.4.2.jar,
 							lib/poi-3.15.jar,
 							lib/poi-excelant-3.15.jar,
 							lib/poi-ooxml-3.15.jar,
 							lib/poi-ooxml-schemas-3.15.jar,
-							lib/poi-scratchpad-3.15.jar -->
+							lib/poi-scratchpad-3.15.jar
 						</Bundle-ClassPath>
 					</instructions>
 				</configuration>
