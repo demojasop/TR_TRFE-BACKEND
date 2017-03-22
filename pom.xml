@@ -17,5 +17,15 @@
     <module>TR_TRFE-TRANLEG-01-ES</module>
   </modules>
 
+  <repositories>
+  	<repository>
+        <id>jasop</id>
+        <url>http://54.194.144.42:8081/nexus/content/groups/public/</url>
+        <releases>
+           <enabled>true</enabled>
+        </releases>
+        
+     </repository>
   
+  </repositories>
 </project>
